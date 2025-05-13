@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="p-6 flex items-center justify-center min-h-screen bg-gray-100">
+
+    {{-- Flash Message --}}
+    @if(flashMessages && flashMessages.success)
+    <div class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-4 bg-green-500 text-white px-4 py-2 rounded z-50">
+        {{ flashMessages.success }}
+    </div>
+    @endif
+
+    @if(flashMessages && flashMessages.error)
+    <div class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-4 bg-red-500 text-white px-4 py-2 rounded z-50">
+        {{ flashMessages.error }}
+    </div>
+    @endif
+
+    <div class="max-w-lg w-full bg-white rounded-lg shadow-lg p-6 mt-2">
+        <a href="/lagu" class="text-blue-500 hover:underline mt-4 block text-left mb-6">
+            ← Kembali
+        </a>
+        <h1 class="text-3xl font-bold text-center mb-4">
+            {{ lagu.penyanyi }} - {{ lagu.judul_lagu }}
+        </h1>
+
+        <p class="text-center text-lg mb-4">
+            <strong>Nama Album:</strong> {{ lagu.nama_album }} <br>
+            <strong>Genre:</strong> {{ lagu.genre }}
+        </p>
+
+        <p style="white-space: pre-line; text-align: center;" class="text-gray-700 text-base mb-4">
+            {{ lagu.lirik }}
+        </p>
+    </div>
+
+</body>
+
+</html>

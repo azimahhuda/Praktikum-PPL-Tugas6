@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>
+        Tambah Lagu
+    </title>
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4422EE;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #5588EE;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Tambah Lagu Baru
+        </h1>
+        <form action="/lagu" method="POST">
+            {{ csrfField() }}
+            <label for="penyanyi">Penyanyi:</label> <br />
+            <input type="text" name="penyanyi" id="penyanyi" /> <br />
+
+            <label for="judul_lagu">Judul Lagu:</label> <br />
+            <input type="text" name="judul_lagu" id="judul_lagu" /> <br />
+
+            <label for="genre">Genre:</label> <br />
+            <input type="text" name="genre" id="genre" /> <br />
+
+            <label for="nama_album">Nama Album:</label> <br />
+            <input type="text" name="nama_album" id="nama_album" /> <br />
+
+            <label for="lirik">Lirik Lagu:</label> <br />
+            <textarea name="lirik" id="lirik" rows="6"
+                style="width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-bottom: 12px;"></textarea>
+            <br />
+
+            <button type="submit">Simpan</button>
+        </form>
+    </div>
+</body>
+
+</html>
