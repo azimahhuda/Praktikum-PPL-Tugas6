@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Lagu</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md text-center">
+        <h1 class="text-2xl font-bold mb-2">Playlist Kamu</h1>
+        <p class="mb-6">Pilih sebuah lagu untuk melihat detailnya!</p>
+
+        {{-- Tombol Tambah Lagu --}}
+        <div class="mb-4">
+            <a href="/lagu/create"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded inline-block">
+                Tambah Lagu
+            </a>
+        </div>
+
+        {{-- Flash Message Sukses --}}
+        @if(flashMessages && flashMessages.success)
+        <div class="mb-4 bg-green-500 text-white px-4 py-2 rounded">
+            {{ flashMessages.success }}
+        </div>
+        @endif
+
+        {{-- Flash Message Error --}}
+        @if(flashMessages && flashMessages.error)
+        <div class="mb-4 bg-red-500 text-white px-4 py-2 rounded">
+            {{ flashMessages.error }}
+        </div>
+        @endif
+
+        <table class="w-full border-collapse">
+            <tbody>
+                @each(item in lagu)
+                <tr class="border-b">
+                    <td class="py-2">
+                        <a href="/lagu/{{ item.id }}" class="no-underline text-gray-800 hover:text-blue-400">
+                            {{ item.penyanyi }} - {{ item.judul_lagu }}
+                        </a>
+                    </td>
+                </tr>
+                @endeach
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
